@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+    <title>User Registration</title>
+    <style>
+        input{
+            padding:1.3%;
+            padding-left:2.6%;
+            padding-right:2.6%;
+            outline:none;
+            box-shadow:none;
+            border:1px solid rgb(206, 201, 201);
+            border-radius:5px;
+            width:100%;
+            
+        }
+        input:hover,input:focus{
+            border:1px solid rgb(103, 206, 103);
+        }
+    </style>
+    
+    <script>
+          
+          $(document).ready(function(){
+            
+            $("#error").hide();
+            var fn=false,ln=false,eml=false,pass=false,bio=false;
+            var green='1px solid rgb(103, 206, 103)';
+            var red='1px solid rgb(206, 103, 108)';    
+            $("#btn_submit").attr("disabled", true);
+       
+            $("#ip_fname").keyup(function(){
+               
+               var fname=$.trim($(this).val());
+               var pattern=/^[A-Za-z ]{2,40}$/;
+               if(!pattern.test(fname))
+               {
+                   fn=false;
+                   $(this).css('border',red);
+                   $("#btn_submit").attr("disabled", true);       
+               }
+               else
+               {
+                   fn=true;
+                   $(this).css('border',green);
+                   if(fn===true && ln===true && eml===true && pass===true && bio===true)
+                   {
+                    $("#btn_submit").attr("disabled", false);
+                   }
+               }                  
+         });
+
+         $("#ip_lname").keyup(function(){
+               
+               var lname=$.trim($(this).val());
+               var pattern=/^[A-Za-z ]{2,40}$/;
+               if(!pattern.test(lname))
+               {
+                   ln=false;
+                   $(this).css('border',red);  // red
+                   $("#btn_submit").attr("disabled", true);      
+               }
+               else
+               {
+                   ln=true;
+                   $(this).css('border',green);  // green
+                   if(fn===true && ln===true && eml===true && pass===true && bio===true)
+                   {
+                    $("#btn_submit").attr("disabled", false);
+                   }
+               }                  
+         });
+
+         $("#ip_email").keyup(function()
+            {
+                var email=$.trim($(this).val());
+                var pattern=/^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+                if(!pattern.test(email))
+                {
+                    eml=false;
+                    $(this).css('border',red);
+                    $("#btn_submit").attr("disabled", true);                    
+                }
+                else
+                {
+                    eml=true;
+                    $(this).css('border',green);
+                    if(fn===true && ln===true && eml===true && pass===true && bio===true)
+                    {
+                        $("#btn_submit").attr("disabled",false);
+                    }
+                }
+            });
+
+           $("#ip_bio").keyup(function(){
+                 var biov=$.trim($(this).val());
+                 var pattern=/^[A-Za-z0-9'\.\-\s\,\/]{20,150}$/;
+                  if(!pattern.test(biov))
+                  {
+                      bio=false;
+                      $(this).css('border',red);
+                      $("#btn_submit").attr("disabled", true);
+                  }
+                
+                else
+                {
+                    bio=true;
+                    $(this).css('border',green);
+                    if(fn===true && ln===true && eml===true && pass===true && bio===true)
+                    {
+                        $("#btn_submit").attr("disabled",false);
+                    }
+                } 
+           }); 
+           
+           $("#ip_password").keyup(function(){
+               
+               var password=$.trim($(this).val());
+               var pattern=/^[A-Za-z0-9]{8,16}$/;
+               if(!pattern.test(password))
+               {
+                   pass=false;
+                   $(this).css('border',red);
+                   $("#btn_submit").attr("disabled", true);
+                   $("#error").html("Password should contain minimum 8 and maximum 16 characters including numbers. Special characters are strictly not allowed.").show();            
+               }
+             
+             else
+             {
+                 pass=true;
+                 $("#error").hide();
+                 $(this).css('border',green);
+                 if(fn===true && ln===true && eml===true && pass===true && bio===true)
+                 {
+                    $("#btn_submit").attr("disabled", false);
+                 }
+             }      
+                
+         });
+
+    });
+ 
+    </script>
+</head>
+
+<body style="font-family:Karla">
+    <div class="container">
+        <div class="quora">
+            <h1 style="text-align:center;margin-left:auto;margin-right:auto;margin-top:3%;margin-bottom:2%;font-weight:bold;color:#a21a2e">Quora</h1>
+        </div>
+        <h4 style="text-align:center;margin-left:auto;margin-right:auto;">A place to share knowledge and better understand the world</h4>
+        <div style="margin-top:4%;margin-bottom:2%; margin-left:3%;margin-right:3%; border:1px solid #ccc9c9;border-radius:8px">
+            <form action="/register" method="POST">
+              <div class="row" style="margin-left:2%;margin-right:2%;margin-top:2%;margin-bottom:3%">
+                <div class="col-lg-12">
+                    <p style="padding-left:1.3%;color:rgb(5, 87, 5)">Sign Up</p>
+                </div>
+                <div class="col-lg-12">
+                    <hr style="margin-top:0%;margin-bottom:3%;border:0.5px solid #6598c7">
+                </div> 
+                <div class="col-lg-6">
+                    <input type="text" name="fname" placeholder="First Name *" spellcheck="false" id="ip_fname">
+                </div>
+                <div class="col-lg-6">
+                    <input type="text" name="lname" placeholder="Last Name *" spellcheck="false" id="ip_lname">
+                </div>
+                <div class="col-lg-6" style="margin-top:2%;">
+                    <input type="email" name="email" placeholder="Email *" id="ip_email" spellcheck="false">
+                </div>
+                <div class="col-lg-6" style="margin-top:2%">
+                    <input type="password" name="password" placeholder="Password *" id="ip_password" spellcheck="false">
+                </div>
+
+                <div class="col-lg-12" style="margin-top:1%">
+                    <label id="error" style="padding:1.3%;font-size:14px;color:rgb(100, 6, 6)"></label>
+                </div>
+
+                <div class="col-lg-12" style="margin-top:1%">
+                    <input type="text" name="bio" id="ip_bio" style="padding-left:1.3%;padding-top:0.65%;padding-bottom:0.65%;" placeholder="Bio & Info *" spellcheck="false">
+                </div>
+                <div class="col-lg-12" style="margin-top:2.5%">
+                    <button class="btn btn-primary" id="btn_submit" type="submit" style="box-shadow:none;" >Sign Up</button>
+                </div> 
+              </div>
+            </form>
+        </div>
+
+        <%   if(registrationError.length > 0)    {    %>
+            <div class="modal fade" id="myModal">
+                 <div class="modal-dialog">
+                   <div class="modal-content">
+                   
+                     <!-- MODAL HEADER -->
+                     <div class="modal-header" style="border-top:3px solid rgb(228, 228, 228)">
+                       <h3 class="modal-title" style="color: rgb(150, 30, 30)">&nbsp;&nbsp;Registration Failed</h3>
+                       <button type="button" class="close" data-dismiss="modal">×</button>
+                     </div>
+                     
+                     <!-- MODAL BODY -->
+                     <div class="modal-body" style="margin-left:3%">
+                       <%= registrationError %>
+                     </div>
+     
+                    </div>
+                 </div>
+               </div>
+            <!-- OPEN / DISPLAY MODEL -->
+            <script>
+               $(document).ready(function()
+               {
+                  $("#myModal").modal();
+               
+               });
+            </script>
+         
+        <%    }    %> 
+        
+    
+
+    </div>
+</body>
+</html>

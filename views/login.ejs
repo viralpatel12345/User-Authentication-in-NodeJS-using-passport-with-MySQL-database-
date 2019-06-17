@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+    <title>User Login</title>
+    <style>
+        input{
+            padding:1%;
+            padding-left:2%;
+            padding-right:2%;
+            outline:none;
+            box-shadow:none;
+            border:1px solid rgb(206, 201, 201);
+            border-radius:5px;
+            width:100%;
+            
+        }
+        input:hover,input:focus{
+            border:1px solid rgb(103, 206, 103);
+        }
+    </style>
+    
+<body style="font-family:Karla">
+    <div class="container">
+        <div class="quora">
+            <h1 style="text-align:center;margin-left:auto;margin-right:auto;margin-top:3%;margin-bottom:2%;font-weight:bold;color:#a21a2e">Quora</h1>
+        </div>
+        <h4 style="text-align:center;margin-left:auto;margin-right:auto;">A place to share knowledge and better understand the world</h4>
+            <div style="margin-top:4%;margin-bottom:2%;margin-left:10%;margin-right:10%; border:1px solid #ccc9c9;border-radius:8px">
+            <form method="POST" action="/login">     
+                <div class="row" style="margin-left:2%;margin-right:2%;margin-top:2%;margin-bottom:3%">
+                <div class="col-lg-6">
+                    <p style="padding-left:1.3%;color:rgb(5, 87, 5)">Login</p>
+                </div>
+                <div class="col-lg-6">
+                    <a href="/forgot" style="float:right;color:rgb(82, 75, 182);padding-right:1.8%;text-decoration:none">forgot Password ?</a>
+                </div>
+                <div class="col-lg-12">
+                    <hr style="margin-top:0%;margin-bottom:4%;border:0.5px solid #6598c7">
+                </div> 
+                <div class="col-lg-12">
+                    <input type="email" name="email" id="ip_email" spellcheck="false" placeholder="Email">
+                </div>
+                <div class="col-lg-12" style="margin-top:2.5%">
+                    <input type="password" name="password" id="ip_password" placeholder="Password">
+                </div>
+                <div class="col-lg-12" style="margin-top:2.5%">
+                    <button class="btn btn-success" id="btn_submit" type="submit" style="box-shadow:none;" >&nbsp;Login&nbsp;</button>
+                </div>    
+            </div>
+            </form>
+        </div>
+ 
+        <%   if(loginError.length > 0)    {    %>
+            <div class="modal fade" id="myModal">
+                 <div class="modal-dialog">
+                   <div class="modal-content">
+                   
+                     <!-- MODAL HEADER -->
+                     <div class="modal-header" style="border-top:3px solid rgb(228, 228, 228)">
+                       <h3 class="modal-title" style="color: rgb(170, 36, 36)">&nbsp;&nbsp;Error</h3>
+                       <button type="button" class="close" data-dismiss="modal">×</button>
+                     </div>
+                     
+                     <!-- MODAL BODY -->
+                     <div class="modal-body" style="margin-left:3%">
+                       <%= loginError %>
+                     </div>
+     
+                    </div>
+                 </div>
+               </div>
+            <!-- OPEN / DISPLAY MODEL -->
+            <script>
+               $(document).ready(function()
+               {
+                  $("#myModal").modal();
+               
+               });
+            </script>
+         
+        <%    }    %>
+        
+        <%   if(errorForgotPasswordInput.length > 0)    {    %>
+            <div class="modal fade" id="myModal">
+                 <div class="modal-dialog">
+                   <div class="modal-content">
+                   
+                     <!-- MODAL HEADER -->
+                     <div class="modal-header" style="border-top:3px solid rgb(228, 228, 228)">
+                       <h3 class="modal-title" style="color: rgb(170, 36, 36)">&nbsp;&nbsp;Error</h3>
+                       <button type="button" class="close" data-dismiss="modal">×</button>
+                     </div>
+                     
+                     <!-- MODAL BODY -->
+                     <div class="modal-body" style="margin-left:3%">
+                       <%= errorForgotPasswordInput %>
+                     </div>
+        
+                    </div>
+                 </div>
+               </div>
+            <!-- OPEN / DISPLAY MODEL -->
+            <script>
+               $(document).ready(function()
+               {
+                  $("#myModal").modal();
+               
+               });
+            </script>
+         
+        <%    }    %>
+
+        <%   if(forgotPasswordGenerated.length > 0)    {    %>
+            <div class="modal fade" id="myModal">
+                 <div class="modal-dialog">
+                   <div class="modal-content">
+                   
+                     <!-- MODAL HEADER -->
+                     <div class="modal-header" style="border-top:3px solid rgb(228, 228, 228)">
+                       <h3 class="modal-title" style="color: rgb(10, 109, 31)">&nbsp;&nbsp;Success !</h3>
+                       <button type="button" class="close" data-dismiss="modal">×</button>
+                     </div>
+                     
+                     <!-- MODAL BODY -->
+                     <div class="modal-body" style="margin-left:3%;margin-right:3%;margin-bottom:3%">
+                       <%= forgotPasswordGenerated %>
+                     </div>
+        
+                    </div>
+                 </div>
+               </div>
+            <!-- OPEN / DISPLAY MODEL -->
+            <script>
+               $(document).ready(function()
+               {
+                  $("#myModal").modal();
+               
+               });
+            </script>
+         
+        <%    }    %>
+       
+        
+        <%   if(forgot.length > 0)    {    %>
+            <div class="modal fade" id="myModal">
+                 <div class="modal-dialog">
+                   <div class="modal-content">
+                   
+                     <!-- MODAL HEADER -->
+                     <div class="modal-header" style="border-top:3px solid rgb(228, 228, 228)">
+                       <h3 class="modal-title" style="color: rgb(170, 36, 36)">&nbsp;&nbsp;Forgot Password !</h3>
+                       <button type="button" class="close" data-dismiss="modal">×</button>
+                     </div>
+                     
+                     <!-- MODAL BODY -->
+                     <div class="modal-body" style="margin-left:3%;margin-right:3%">
+                        <form method="POST" action="/forgot">  
+                           <input type="email" placeholder="Registered Email" name="email" spellcheck="false" style="margin-top:3%;padding:2%">
+                           <button class="btn btn-success" id="btn_submit" type="submit" style="box-shadow:none;margin-top:6%;margin-bottom:3%" >&nbsp;Submit&nbsp;</button>
+                        </form>
+                     </div>
+     
+                    </div>
+                 </div>
+               </div>
+            <!-- OPEN / DISPLAY MODEL -->
+            <script>
+               $(document).ready(function()
+               {
+                  $("#myModal").modal();
+               
+               });
+            </script>
+         
+        <%    }    %> 
+    </div>
+</body>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+    <title>Quora</title>
+    
+</head> 
+
+<body style="font-family:Karla">
+    <div class="container">
+        <div class="quora">
+            <h1 style="text-align:center;margin-left:auto;margin-right:auto;margin-top:3%;margin-bottom:2%;font-weight:bold;color:#a21a2e">Quora</h1>
+        </div>
+        <h4 style="text-align:center;margin-left:auto;margin-right:auto;">A place to share knowledge and better understand the world</h4>
+        <div style="margin-top:4%;margin-bottom:2%;margin-left:12%;margin-right:12%">
+            <hr id="hrTag" style="border:2px solid rgb(98, 96, 194)">
+            <div class="row" style="margin-top:5%;margin-bottom:5%;text-align:center">
+                
+                <div class="col-lg-12" style="margin-top:5%">
+                    <a href="/register"><button class="btn btn-primary"  type="submit" style="box-shadow:none;padding:1.5%;width:25%" >Sign Up With Email</button></a>
+                </div>
+                <div class="col-lg-12" style="margin-top:5%;">
+                    <a href="/login"><button class="btn btn-success"  type="submit" style="box-shadow:none;padding:1.5%;width:25%" >Login</button></a>
+                </div>
+            </div>
+        </div>    
+
+    </div>
+    <script>
+        var hr =  document.getElementById("hrTag");
+        hr.style.width=0+"%";
+        var c=0;
+        var inter = setInterval(function(){
+             if(c<99)
+             {
+                c++; 
+                hr.style.width=c+"%";
+             }
+             else
+             {
+                 clearInterval(inter);
+             }
+        },10);
+      </script>
+
+</body>    
