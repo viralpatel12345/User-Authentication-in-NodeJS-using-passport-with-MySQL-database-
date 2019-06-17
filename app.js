@@ -107,15 +107,14 @@ app.get('/forgot',function(req,res){
 app.post('/forgot',function(req,res){
        var email= req.body.email;
        connection.query("SELECT * from user WHERE email = ? ",[email],function(err,rows){
-            
-
-             
              if(!rows.length){    
                    console.log('Email not compared');
                    req.flash('errorForgotPasswordInput','Invalid email address.');
                    res.redirect('/login');
              }
              else{
+                 // Send Email & make changes accordingly
+                    
                   console.log('Email compared');
                   req.flash('forgotPasswordGenerated','You will Shortly receive email containing link to set Password. Kindly Check your email.');
                   res.redirect('/login');
